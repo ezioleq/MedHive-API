@@ -1,6 +1,7 @@
 import express, { Express } from 'express'
 import { DatabaseContext } from './dataSource'
 import cors from 'cors'
+import { HelperController } from './controllers/helperController'
 
 /**
  * Application server class.
@@ -18,11 +19,19 @@ class App {
     this._express.set('trust proxy', 1)
   }
 
+  /**
+   * Setup use of specified middlewares.
+   */
   public useMiddlewares(): void {
     this._express.use(cors())
   }
 
-  public registerControllers(): void {}
+  /**
+   * Register routes controllers.
+   */
+  public registerControllers(): void {
+    this._express.use('/helper', new HelperController().setup())
+  }
 
   /**
    * Start the server on the given port.
