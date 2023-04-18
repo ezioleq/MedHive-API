@@ -1,5 +1,6 @@
 import express, { Express } from 'express'
 import { DatabaseContext } from './dataSource'
+import cors from 'cors'
 
 /**
  * Application server class.
@@ -17,7 +18,9 @@ class App {
     this._express.set('trust proxy', 1)
   }
 
-  public useMiddlewares(): void {}
+  public useMiddlewares(): void {
+    this._express.use(cors())
+  }
 
   public registerControllers(): void {}
 
