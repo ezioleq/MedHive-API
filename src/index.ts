@@ -5,7 +5,7 @@ import { AppDataSource } from './dataSource'
 
 AppDataSource.initialize()
   .then(() => {
-    console.log('awd')
+    console.log('Connected to the database successfully')
   })
   .catch((err) => console.log(err))
 
