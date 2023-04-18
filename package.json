@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Ezioleq/MedHive-API#readme",
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

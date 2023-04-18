@@ -1,18 +1,10 @@
-import 'reflect-metadata'
+import { App } from './app'
 
-import express from 'express'
-import { AppDataSource } from './dataSource'
+const app = new App()
 
-AppDataSource.initialize()
-  .then(() => {
-    console.log('Connected to the database successfully')
-  })
-  .catch((err) => console.log(err))
+app.setup()
 
-const app = express()
+app.useMiddlewares()
+app.registerControllers()
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
-
-app.listen(3000)
+app.listen(parseInt(process.env.MEDHIVE_PORT ?? '3000'))
