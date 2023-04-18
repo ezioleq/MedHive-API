@@ -1,6 +1,9 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 
+/**
+ * Database context.
+ */
 class DatabaseContext {
   readonly _dataSource: DataSource
 
@@ -18,6 +21,9 @@ class DatabaseContext {
     })
   }
 
+  /**
+   * Initialize the database connection.
+   */
   public initialize(): void {
     console.debug('Initializing database connection...')
     this._dataSource

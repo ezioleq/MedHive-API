@@ -1,5 +1,5 @@
 import express, { Express } from 'express'
-import { DatabaseContext } from './dataSource'
+import { DatabaseContext } from './databaseContext'
 import cors from 'cors'
 import { HelperController } from './controllers/helperController'
 
@@ -30,7 +30,7 @@ class App {
    * Register routes controllers.
    */
   public registerControllers(): void {
-    this._express.use('/helper', new HelperController().setup())
+    this.addController('/helper', new HelperController().setup())
   }
 
   /**
@@ -49,6 +49,10 @@ class App {
    */
   private setupDatabase(): void {
     this._dbContext.initialize()
+  }
+
+  private addController(root: string, router: express.Router): void {
+    this._express.use(root, router)
   }
 }
 
