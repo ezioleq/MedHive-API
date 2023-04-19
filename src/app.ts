@@ -61,6 +61,12 @@ class App {
     this._dbContext.initialize()
   }
 
+  /**
+   * Add route controller.
+   * @param root Root path.
+   * @param router Express router.
+   * @private
+   */
   private addController(root: string, router: express.Router): void {
     this._express.use(root, router)
   }
