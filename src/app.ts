@@ -3,6 +3,7 @@ import { DatabaseContext } from './databaseContext'
 import cors from 'cors'
 import { HelperController } from './controllers/helperController'
 import { ServiceProvider } from './services/serviceProvider'
+import { UserService } from './services/userService'
 
 /**
  * Application server class.
@@ -32,14 +33,14 @@ class App {
    * Register services in the service provider.
    */
   public registerServices(): void {
-    return
+    this._serviceProvider.registerService(new UserService())
   }
 
   /**
    * Register routes controllers.
    */
   public registerControllers(): void {
-    this.addController('/helper', new HelperController().setup())
+    this.addController('/helper', new HelperController(this._serviceProvider).setup())
   }
 
   /**
