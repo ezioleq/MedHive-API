@@ -2,6 +2,7 @@ import express, { Express } from 'express'
 import { DatabaseContext } from './databaseContext'
 import cors from 'cors'
 import { HelperController } from './controllers/helperController'
+import { ServiceProvider } from './services/serviceProvider'
 
 /**
  * Application server class.
@@ -9,6 +10,7 @@ import { HelperController } from './controllers/helperController'
 class App {
   private _express: Express = express()
   private _dbContext: DatabaseContext = new DatabaseContext()
+  private _serviceProvider: ServiceProvider = new ServiceProvider()
 
   /**
    * Setup application.
@@ -24,6 +26,13 @@ class App {
    */
   public useMiddlewares(): void {
     this._express.use(cors())
+  }
+
+  /**
+   * Register services in the service provider.
+   */
+  public registerServices(): void {
+    return
   }
 
   /**
