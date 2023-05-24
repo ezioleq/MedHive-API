@@ -4,6 +4,7 @@ import { Account } from './models/account'
 import { Document } from './models/document'
 import { Address } from './models/address'
 import { Condition } from './models/condition'
+import { Department } from './models/department'
 
 /**
  * Database context.
@@ -20,7 +21,7 @@ class DatabaseContext {
       type: 'sqlite',
       database: 'medhive.sqlite',
       synchronize: true,
-      entities: [Account, Document, Address, Condition],
+      entities: [Account, Document, Address, Condition, Department],
       migrations: [],
     })
   }
