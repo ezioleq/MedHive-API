@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm'
 import { Account } from './models/account'
 import { Document } from './models/document'
 import { Address } from './models/address'
+import { Condition } from './models/condition'
 
 /**
  * Database context.
@@ -19,7 +20,7 @@ class DatabaseContext {
       type: 'sqlite',
       database: 'medhive.sqlite',
       synchronize: true,
-      entities: [Account, Document, Address],
+      entities: [Account, Document, Address, Condition],
       migrations: [],
     })
   }
