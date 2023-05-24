@@ -1,11 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
-import { UserRole } from './userRole'
 
 /**
- * User model.
+ * User account.
  */
 @Entity()
-export class User {
+export class Account {
   /**
    * Unique identifier.
    */
@@ -21,12 +20,12 @@ export class User {
   /**
    * Password hash.
    */
-  @Column({ length: 1024 })
+  @Column({ length: 4096 })
   public passwordHash!: string
 
   /**
-   * User role.
+   * Whether account is owned by person from stuff.
    */
-  @Column({ type: 'simple-enum', default: UserRole.Visitor })
-  public role!: UserRole
+  @Column({ nullable: false, default: false })
+  public isStaff!: boolean
 }

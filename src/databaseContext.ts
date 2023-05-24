@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
-import { User } from './models/user/user'
+import { Account } from './models/account'
 
 /**
  * Database context.
@@ -17,7 +17,7 @@ class DatabaseContext {
       type: 'sqlite',
       database: 'medhive.sqlite',
       synchronize: true,
-      entities: [User],
+      entities: [Account],
       migrations: [],
     })
   }
