@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Patient } from './patient'
 
 /**
  * Patient's condition.
@@ -16,4 +17,10 @@ export class Condition {
    */
   @Column({ nullable: false })
   public name!: string
+
+  /**
+   * Patient.
+   */
+  @OneToMany(() => Patient, (patient: Patient) => patient.condition)
+  public patient!: Patient
 }

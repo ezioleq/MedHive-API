@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Patient } from './patient'
 
 /**
  * User's single document representation.
@@ -16,4 +17,10 @@ export class Document {
    */
   @Column({ nullable: false })
   public resourceUrl!: string
+
+  /**
+   * Patient.
+   */
+  @ManyToOne(() => Patient, (patient: Patient) => patient.documents)
+  public patient!: Patient
 }

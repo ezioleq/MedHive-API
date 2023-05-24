@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Staff } from './staff'
+import { Appointment } from './appointment'
 
 /**
  * Single department.
@@ -22,4 +24,16 @@ export class Department {
    */
   @Column({ nullable: false })
   public type!: string
+
+  /**
+   * Staff.
+   */
+  @OneToMany(() => Staff, (staff: Staff) => staff.department)
+  public staff!: Staff[]
+
+  /**
+   * Appointments.
+   */
+  @OneToMany(() => Appointment, (appointments: Appointment) => appointments.department)
+  public appointments!: Appointment[]
 }

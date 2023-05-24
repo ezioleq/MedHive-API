@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Address } from './address'
+import { AccountType } from './accountType'
 
 /**
  * User account.
@@ -24,8 +26,45 @@ export class Account {
   public passwordHash!: string
 
   /**
-   * Whether account is owned by person from stuff.
+   * Real name.
+   */
+  @Column({ length: 32 })
+  public name!: string
+
+  /**
+   * Real surname.
+   */
+  @Column({ length: 64 })
+  public surname!: string
+
+  /**
+   * Birthdate.
+   */
+  @Column({ type: 'date' })
+  public birthdate!: Date
+
+  /**
+   * Sex. True for a woman. False for a man.
    */
   @Column({ nullable: false, default: false })
-  public isStaff!: boolean
+  public sex!: boolean
+
+  /**
+   * PESEL number.
+   */
+  @Column({ length: 11 })
+  public pesel!: string
+
+  /**
+   * Residential address.
+   */
+  @OneToOne(() => Address)
+  @JoinColumn()
+  public address!: Address
+
+  /**
+   * Account type.
+   */
+  @Column({ type: 'simple-enum', default: AccountType.Patient })
+  public type!: AccountType
 }
